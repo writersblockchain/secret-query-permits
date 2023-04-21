@@ -10,10 +10,10 @@ use secret_toolkit::permit::Permit;
 
 #[entry_point]
 pub fn instantiate(
-    deps: DepsMut,
+    _deps: DepsMut,
     _env: Env,
     _info: MessageInfo,
-    msg: InstantiateMsg,
+    _msg: InstantiateMsg,
 ) -> StdResult<Response> {
     Ok(Response::default())
 }
@@ -77,5 +77,28 @@ fn query_card(
     permit: Permit,
     index: u8,
 ) -> StdResult<CardResponse> {
-    todo!()
+    let contract_address = env.contract.address;
+
+    let viewer = validate(
+        deps,
+        PREFIX_REVOKED_PERMITS,
+        &permit,
+        contract_address.to_string(),
+        None,
+    )?;
+
+    let card_exists = USER_CARDS
+        .add_suffix(wallet.as_bytes())
+        .get(deps.storage, &index);
+
+    match card_exists {
+        Some(card) => {
+            if card.whitelist.contains(&viewer) {
+                Ok(CardResponse { card: card })
+            } else {
+                Err(StdError::generic_err("Not authorized"))
+            }
+        }
+        None => Err(StdError::generic_err("Need query permit!")),
+    }
 }

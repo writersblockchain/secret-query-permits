@@ -1,0 +1,3 @@
+cargo:rerun-if-changed=build/main.rs
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/sean_conrad/Desktop/secret-query-permits/contract/target/wasm32-unknown-unknown/release/build/typenum-5db48515de1d5402/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/Users/sean_conrad/Desktop/secret-query-permits/contract/target/wasm32-unknown-unknown/release/build/typenum-5db48515de1d5402/out/op.rs

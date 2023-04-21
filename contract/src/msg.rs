@@ -17,7 +17,11 @@ pub enum ExecuteMsg {
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum QueryMsg {
-    GetCard {},
+    GetCard {
+        wallet: Addr,
+        permit: Permit,
+        index: u8,
+    },
 }
 
 // We define a custom struct for each query response
