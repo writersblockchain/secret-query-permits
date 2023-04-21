@@ -1,0 +1,1 @@
+##### HackSecret Workshop - Query Permits
