@@ -5,23 +5,25 @@ import { SecretNetworkClient, Wallet } from "secretjs";
 function App() {
   const [signature, setSignature] = useState(null);
   const permitName = "view my card";
-  const chainId = "pulsar-2";
-  const myAddress = "secret1j7n3xx4sfgjea4unghd78qvnvxdz49cxmrkqlj";
-  const allowedTokens = "secret13q57es44szumqy43d6rfwl9gc2d4xsa82yzlrh";
+  const chainId = "pulsar-3";
+  const myAddress = "secret1verdmwf2e0d930vulxru5fg3lm9y8r3xg5u7l6";
+
+  // const allowedTokens = "secret1plx46wr96v0sxgg9vyz2uw0jjnycc0euqzut2k";
   const contractCodeHash =
-    "e2c24d4ebfaa785b033a09e679bb468814018fc4d08a6b1d024da4181f7fe054";
-  const contractAddress = "secret13q57es44szumqy43d6rfwl9gc2d4xsa82yzlrh";
+    "370e1a4c6f11a0e35077bc318f3a7d712a0b5aa731a533e3540801ffffc27faa";
+  const contractAddress = "secret1plx46wr96v0sxgg9vyz2uw0jjnycc0euqzut2k";
 
   const wallet = new Wallet(
     "shed clerk spray velvet flower tide cherry idea public solar prize tackle"
   );
 
-  const secretjs = new SecretNetworkClient({
-    chainId: "pulsar-2",
-    url: "https://api.pulsar.scrttestnet.com",
-    wallet: wallet,
-    walletAddress: wallet.address,
-  });
+const secretjs = new SecretNetworkClient({
+  chainId: "pulsar-3",
+  url: "https://api.pulsar3.scrttestnet.com",
+  wallet: wallet,
+  walletAddress: wallet.address,
+});
+
 
   let create_viewing_permit = async () => {
     const { signature } = await window.keplr.signAmino(
@@ -40,7 +42,7 @@ function App() {
             type: "query_permit", // Must be "query_permit"
             value: {
               permit_name: permitName,
-              allowed_tokens: [allowedTokens],
+              allowed_tokens: [contractAddress],
               permissions: [],
             },
           },
@@ -67,8 +69,8 @@ function App() {
           permit: {
             params: {
               permit_name: permitName,
-              allowed_tokens: [allowedTokens],
-              chain_id: "pulsar-2",
+              allowed_tokens: [contractAddress],
+              chain_id: "pulsar-3",
               permissions: [],
             },
             signature: signature,

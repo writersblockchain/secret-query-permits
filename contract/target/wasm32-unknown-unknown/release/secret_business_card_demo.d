@@ -1,1 +1,1 @@
-/Users/sean_conrad/Desktop/secret-query-permits/contract/target/wasm32-unknown-unknown/release/secret_business_card_demo.wasm: /Users/sean_conrad/Desktop/secret-query-permits/contract/src/contract.rs /Users/sean_conrad/Desktop/secret-query-permits/contract/src/lib.rs /Users/sean_conrad/Desktop/secret-query-permits/contract/src/msg.rs /Users/sean_conrad/Desktop/secret-query-permits/contract/src/state.rs
+/contract/target/wasm32-unknown-unknown/release/secret_business_card_demo.wasm: /contract/src/contract.rs /contract/src/lib.rs /contract/src/msg.rs /contract/src/state.rs
