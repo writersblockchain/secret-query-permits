@@ -1,5 +1,5 @@
 use crate::msg::{CardResponse, ExecuteMsg, InstantiateMsg, QueryMsg};
-use crate::state::PREFIX_REVOKED_PERMITS;
+use crate::state::CARD_PERMITS;
 use crate::state::{Card, USER_CARDS};
 use cosmwasm_std::{
     entry_point, to_binary, Addr, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdError,
@@ -81,7 +81,7 @@ fn query_card(
 
     let viewer = validate(
         deps,
-        PREFIX_REVOKED_PERMITS,
+        CARD_PERMITS,
         &permit,
         contract_address.to_string(),
         None,
